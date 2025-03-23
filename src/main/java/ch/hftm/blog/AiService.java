@@ -15,11 +15,12 @@ public interface AiService {
 
     @SystemMessage( "Du bist ein professionller Blog Autor")
     @UserMessage("""
-    Schreibe einen Blogpost zu folgendem Thema: {topic}.s
+    Schreibe einen Blogpost zu folgendem Thema: {topic}.
+    Es soll sich um folgende Stichworte handeln: {keywords}
     Er soll {lines} Zeilen lang sein.
     Gib mir den Titel und Inhalt separat aus.
     """)
-    Blog generateBlog(String topic, int lines);
+    Blog generateBlog(String topic, List<String> keywords, int lines);
 
     @SystemMessage("Du bist ein professionller Blog Autor")
     @UserMessage("""

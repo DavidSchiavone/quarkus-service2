@@ -47,7 +47,7 @@ public class ValidationService {
     @Incoming("generate-blog-request")
     public void generateBlog(GenerateBlogRequest blogRequest)
     {
-        Blog blog = aiService.generateBlog(blogRequest.topic(), 10);
+        Blog blog = aiService.generateBlog(blogRequest.topic(), blogRequest.keywords(), 10);
         AdditionalInformation additionalInformation = createAdditionalInformation(blog.title(), blog.content());
 
         generateBlogEmitter.send(new GenerateBlogResponse(blog, additionalInformation));
